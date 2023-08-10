@@ -34,8 +34,9 @@ BUILD_CUDA_EXT = int(os.environ.get('BUILD_CUDA_EXT', '1')) == 1
 if BUILD_CUDA_EXT:
     try:
         import torch
-    except:
+    except Exception as e:
         print("Building cuda extension requires PyTorch(>=1.13.0) been installed, please install PyTorch first!")
+        print(e)
         sys.exit(-1)
 
     CUDA_VERSION = None
